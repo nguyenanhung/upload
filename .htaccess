@@ -1,3 +1,0 @@
-#### Munee .htaccess Code Start ####
-RewriteRule ^(.*\.(?:css|less|scss|js|coffee|jpg|png|gif|jpeg))$ assets.php?files=/$1 [L,QSA,NC]
-#### Munee .htaccess Code End ####

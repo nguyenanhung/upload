@@ -8,7 +8,7 @@
 
 namespace nguyenanhung\Upload\Repository;
 
-use nguyenanhung\Upload\Interfaces\ProjectInterface;
+use nguyenanhung\Upload\Environment;
 
 /**
  * Class DataRepository
@@ -17,7 +17,7 @@ use nguyenanhung\Upload\Interfaces\ProjectInterface;
  * @author    713uk13m <dev@nguyenanhung.com>
  * @copyright 713uk13m <dev@nguyenanhung.com>
  */
-class DataRepository implements ProjectInterface
+class DataRepository implements Environment
 {
     const CONFIG_PATH = 'config';
     const CONFIG_EXT  = '.php';
@@ -25,10 +25,10 @@ class DataRepository implements ProjectInterface
     /**
      * Function getVersion
      *
-     * @author: 713uk13m <dev@nguyenanhung.com>
-     * @time  : 9/28/18 14:47
-     *
      * @return string
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 09/17/2021 26:25
      */
     public function getVersion()
     {

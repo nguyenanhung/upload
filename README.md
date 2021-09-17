@@ -2,4 +2,19 @@
 
 # Upload Manager
 
-Develop by dev@nguyenanhung.com
+Simple Driver for Upload in PHP
+
+## Upload Driver
+
+- [x] Upload to Self-Server with `nguyenanhung\Upload\SimpleUpload`
+- [ ] Upload to S3 Storage
+
+## Contact & Support
+
+If any question & request, please contact following information
+
+| Name        | Email                | Skype            | Facebook      |
+| ----------- | -------------------- | ---------------- | ------------- |
+| Hung Nguyen | dev@nguyenanhung.com | nguyenanhung5891 | @nguyenanhung |
+
+From Vietnam with Love <3

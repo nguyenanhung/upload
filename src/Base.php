@@ -97,7 +97,7 @@ class Base implements Environment
     protected $maxFileSize;
 
     /**
-     * @var bool|\Aws\Result Upload Result, true on Success
+     * @var bool|mixed Upload Result, true on Success or Aws Result Object
      */
     protected $result = false;
 
@@ -186,6 +186,26 @@ class Base implements Environment
     public function getVersion()
     {
         return self::VERSION;
+    }
+
+    /**
+     * Function getLibraryInfo
+     *
+     * @return array
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 09/17/2021 14:42
+     */
+    public function getLibraryInfo()
+    {
+        return array(
+            'name'        => self::PROJECT_NAME,
+            'license'     => 'MIT',
+            'authorName'  => self::AUTHOR_NAME,
+            'authorEmail' => self::AUTHOR_EMAIL,
+            'authorUrl'   => self::AUTHOR_WEB,
+            'sourceUrl'   => 'https://github.com/nguyenanhung/upload',
+        );
     }
 
     /**

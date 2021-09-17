@@ -26,6 +26,23 @@ class S3Upload extends Base implements S3UploadInterface
     /** @var \Aws\S3\S3Client $S3 Object */
     protected $S3;
 
+    /**
+     * @var array Sample Config
+     * @see https://docs.aws.amazon.com/sdk-for-php/v3/developer-guide/s3-encryption-client.html
+     */
+    protected $sampleConfig = array(
+        'endpoint'         => 'https://s3.example.com',
+        'region'           => 'sgp1',
+        'version'          => 'latest',
+        'signatureVersion' => 'v4',
+        'credentials'      => array(
+            'key'    => 'xxx',
+            'secret' => 'xxx',
+        ),
+        'bucketName'       => 'bucketName',
+        'uploadPath'       => 'uploadPath',
+    );
+
     /** @var string $bucketName */
     protected $bucketName = 'nguyenanhung';
 

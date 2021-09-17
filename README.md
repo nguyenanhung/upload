@@ -7,8 +7,8 @@ Simple Driver for Upload in PHP
 ## Upload Driver
 
 - [x] Upload to Self-Server with `nguyenanhung\Upload\SimpleUpload`
-- [x] Upload to S3 Storage: AWS, Digital Ocean S3 Spaces, Linode Object Storage, Vultr Object Storage
-- [ ] Upload to Google Cloud Storage
+- [x] Upload to S3 Storage: Amazon AWS, Digital Ocean S3 Spaces, Linode Object Storage, Vultr Object Storage and anything service support S3 Storage
+- [x] Upload to Google Cloud Storage
 - [ ] Upload to Azure Cloud Storage
 
 ## Contact & Support

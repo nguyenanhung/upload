@@ -37,6 +37,18 @@ class SimpleUpload extends Base implements SimpleUploadInterface
     protected $formId;
 
     /**
+     * @var array Sample Config
+     */
+    protected $sampleConfig = array(
+        'prefixFilename' => 'Bear_',
+        'uploadPath'     => 'uploadPath',
+        'formId'         => 'foo',
+        'maxFileSize'    => '5M',
+        'fileExtension'  => 'jpg',
+        'mediaType'      => 'image/jpeg',
+    );
+
+    /**
      * SimpleUpload constructor.
      *
      * @param array $config
@@ -48,6 +60,24 @@ class SimpleUpload extends Base implements SimpleUploadInterface
     {
         parent::__construct($config);
         $this->config = $config;
+        if (isset($config['formId'])) {
+            $this->formId = trim($config['formId']);
+        }
+        if (isset($config['uploadPath'])) {
+            $this->uploadPath = trim($config['uploadPath']);
+        }
+        if (isset($config['maxFileSize'])) {
+            $this->maxFileSize = trim($config['maxFileSize']);
+        }
+        if (isset($config['fileExtension'])) {
+            $this->fileExtension = trim($config['fileExtension']);
+        }
+        if (isset($config['mediaType'])) {
+            $this->mediaType = trim($config['mediaType']);
+        }
+        if (isset($config['prefixFilename'])) {
+            $this->prefixFilename = trim($config['prefixFilename']);
+        }
     }
 
     /**
@@ -83,7 +113,7 @@ class SimpleUpload extends Base implements SimpleUploadInterface
 
         $storage  = new FileSystem($this->uploadPath);
         $file     = new File($this->formId, $storage);
-        $fileName = $this->filename . date('Y-m-d') . '-' . generate_uuid_v4();
+        $fileName = setupNewFileName($this->prefixFilename);
         $file->setName($fileName);
 
         // Validate file upload

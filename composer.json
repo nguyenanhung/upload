@@ -25,7 +25,8 @@
     },
     "require-dev": {
         "kint-php/kint": "^3.0",
-        "aws/aws-sdk-php": "^3.194"
+        "aws/aws-sdk-php": "^3.194",
+        "google/cloud-storage": "^1.25"
     },
     "autoload": {
         "psr-4": {

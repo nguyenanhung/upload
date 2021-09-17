@@ -7,7 +7,7 @@ Simple Driver for Upload in PHP
 ## Upload Driver
 
 - [x] Upload to Self-Server with `nguyenanhung\Upload\SimpleUpload`
-- [ ] Upload to S3 Storage
+- [x] Upload to S3 Storage: AWS, Digital Ocean S3 ...
 
 ## Contact & Support
 

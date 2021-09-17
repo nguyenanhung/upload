@@ -25,7 +25,8 @@
     },
     "require-dev": {
         "kint-php/kint": "^3.0",
-        "aws/aws-sdk-php": "^3.194"
+        "aws/aws-sdk-php": "^3.194",
+        "google/cloud-storage": "^1.25"
     },
     "autoload": {
         "psr-4": {
@@ -36,6 +37,7 @@
         ]
     },
     "suggest": {
-        "aws/aws-sdk-php": "For S3 Object Upload"
+        "aws/aws-sdk-php": "For S3 Object Upload",
+        "google/cloud-storage": "For S3 Google Storage Upload"
     }
 }

@@ -8,9 +8,10 @@
  * Time: 17:33
  */
 
-namespace nguyenanhung\Upload;
+namespace nguyenanhung\Upload\Simple;
 
 use Exception;
+use nguyenanhung\Upload\Base;
 use Upload\Storage\FileSystem;
 use Upload\File;
 use Upload\Validation\Mimetype;
@@ -20,25 +21,12 @@ use Upload\Validation\Extension;
 /**
  * Class SimpleUpload
  *
- * @package   nguyenanhung\Upload
+ * @package   nguyenanhung\Upload\Simple
  * @author    713uk13m <dev@nguyenanhung.com>
  * @copyright 713uk13m <dev@nguyenanhung.com>
  */
-class SimpleUpload implements Environment, SimpleUploadInterface
+class SimpleUpload extends Base implements SimpleUploadInterface
 {
-    /**
-     * @var string Filename Prefix
-     * @example Bear_
-     * @example output file same Bear_uuid-v4
-     */
-    protected $filename;
-
-    /**
-     * @var string Target Upload file on Server
-     * @example /var/tmp/upload
-     */
-    protected $uploadPath;
-
     /**
      * @var string Form ID from HTML form Input, example as foo
      *             <form method="POST" enctype="multipart/form-data">
@@ -49,85 +37,17 @@ class SimpleUpload implements Environment, SimpleUploadInterface
     protected $formId;
 
     /**
-     * @var string|array $mediaType
-     * @see https://www.iana.org/assignments/media-types/media-types.xhtml
-     */
-    protected $mediaType;
-
-    /**
-     * @var string $fileExtension For example: 'png' or array('jpg', 'png', 'gif').
-     */
-    protected $fileExtension;
-
-    /**
-     * @var string Max File Size, use "B", "K", M", or "G"
-     */
-    protected $maxFileSize;
-
-    /**
-     * @var bool Upload Result, true on Success
-     */
-    protected $result = false;
-
-    /**
-     * @var array Upload  Data or Error Data
-     */
-    protected $uploadData = array();
-
-    /**
-     * Function getVersion
+     * SimpleUpload constructor.
      *
-     * @return string
+     * @param array $config
+     *
      * @author   : 713uk13m <dev@nguyenanhung.com>
      * @copyright: 713uk13m <dev@nguyenanhung.com>
-     * @time     : 09/17/2021 34:17
      */
-    public function getVersion()
+    public function __construct($config = array())
     {
-        return self::VERSION;
-    }
-
-    /**
-     * Function getUploadResult
-     *
-     * @return bool
-     * @author   : 713uk13m <dev@nguyenanhung.com>
-     * @copyright: 713uk13m <dev@nguyenanhung.com>
-     * @time     : 09/17/2021 52:47
-     */
-    public function getUploadResult()
-    {
-        return $this->result;
-    }
-
-    /**
-     * Function getUploadData
-     *
-     * @return array
-     * @author   : 713uk13m <dev@nguyenanhung.com>
-     * @copyright: 713uk13m <dev@nguyenanhung.com>
-     * @time     : 09/17/2021 07:39
-     */
-    public function getUploadData()
-    {
-        return $this->uploadData;
-    }
-
-    /**
-     * Function setUploadPath
-     *
-     * @param $uploadPath
-     *
-     * @return $this
-     * @author   : 713uk13m <dev@nguyenanhung.com>
-     * @copyright: 713uk13m <dev@nguyenanhung.com>
-     * @time     : 09/17/2021 43:11
-     */
-    public function setUploadPath($uploadPath)
-    {
-        $this->uploadPath = $uploadPath;
-
-        return $this;
+        parent::__construct($config);
+        $this->config = $config;
     }
 
     /**
@@ -148,65 +68,14 @@ class SimpleUpload implements Environment, SimpleUploadInterface
     }
 
     /**
-     * Function setMediaType
-     *
-     * @param $mediaType
+     * Function handleUpload
      *
      * @return $this
      * @author   : 713uk13m <dev@nguyenanhung.com>
      * @copyright: 713uk13m <dev@nguyenanhung.com>
-     * @time     : 09/17/2021 45:20
+     * @time     : 09/17/2021 52:51
      */
-    public function setMediaType($mediaType)
-    {
-        $this->mediaType = $mediaType;
-
-        return $this;
-    }
-
-    /**
-     * Function setMaxFileSize
-     *
-     * @param $maxFileSize
-     *
-     * @return $this
-     * @author   : 713uk13m <dev@nguyenanhung.com>
-     * @copyright: 713uk13m <dev@nguyenanhung.com>
-     * @time     : 09/17/2021 45:17
-     */
-    public function setMaxFileSize($maxFileSize)
-    {
-        $this->maxFileSize = $maxFileSize;
-
-        return $this;
-    }
-
-    /**
-     * Function setFileExtension
-     *
-     * @param $fileExtension
-     *
-     * @return $this
-     * @author   : 713uk13m <dev@nguyenanhung.com>
-     * @copyright: 713uk13m <dev@nguyenanhung.com>
-     * @time     : 09/17/2021 51:42
-     */
-    public function setFileExtension($fileExtension)
-    {
-        $this->fileExtension = $fileExtension;
-
-        return $this;
-    }
-
-    /**
-     * Function handle
-     *
-     * @return $this
-     * @author   : 713uk13m <dev@nguyenanhung.com>
-     * @copyright: 713uk13m <dev@nguyenanhung.com>
-     * @time     : 09/17/2021 09:50
-     */
-    public function handle()
+    public function handleUpload()
     {
         if (empty($this->uploadPath) || empty($this->formId)) {
             $this->result = false;
@@ -259,15 +128,20 @@ class SimpleUpload implements Environment, SimpleUploadInterface
                 'md5'        => $file->getMd5(),
                 'dimensions' => $file->getDimensions()
             );
+            if ($this->logger !== null) {
+                $this->logger->debug('Upload Data', $this->uploadData);
+            }
+            $this->error = false;
         } catch (Exception $e) {
             // Fail!
             $errors = $file->getErrors();
-            if (function_exists('log_message')) {
-                // Logging if use CodeIgniter Framework
-                log_message('error', 'Upload Error: ' . json_encode($errors));
+            if ($this->logger !== null) {
+                $this->logger->error('Upload File Error: ', $errors);
             }
             $this->result     = false;
             $this->uploadData = $errors;
+            $this->error      = true;
+            $this->errorData  = $errors;
         }
 
         return $this;

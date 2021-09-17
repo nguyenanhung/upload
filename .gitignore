@@ -123,11 +123,16 @@ composer.lock
 /tests/*
 
 storage/*
-storage/logs/*
-storage/cache/*
 !storage/.htaccess
 !storage/index.html
+storage/logs/*
 !storage/logs/.htaccess
 !storage/logs/index.html
+storage/cache/*
 !storage/cache/.htaccess
 !storage/cache/index.html
+storage/tmp/*
+!storage/tmp/.htaccess
+!storage/tmp/index.html
+
+test.php

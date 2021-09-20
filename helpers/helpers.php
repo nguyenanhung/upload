@@ -47,7 +47,7 @@ if (!function_exists('setupNewFileName')) {
     {
         if (!empty($prefix)) {
             $prefix = trim($prefix, '-');
-            $prefix = $prefix . '-';
+            $prefix .= '-';
         }
         return $prefix . date('Y-m-d') . '-' . generate_uuid_v4();
     }

@@ -37,6 +37,12 @@
         ]
     },
     "suggest": {
+        "ext-json": "*",
+        "ext-curl": "*",
+        "ext-fileinfo": "*",
+        "ext-mbstring": "*",
+        "ext-openssl": "*",
+        "ext-xsl": "*",
         "aws/aws-sdk-php": "For S3 Object Upload",
         "google/cloud-storage": "For Google Cloud Storage Upload",
         "microsoft/azure-storage-file": "For Azure Storage File Upload"

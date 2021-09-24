@@ -17,10 +17,11 @@
         }
     ],
     "require": {
-        "php": ">=5.6",
+        "php": ">=7.0",
         "ext-curl": "*",
         "ext-json": "*",
         "ext-fileinfo": "*",
+        "nguyenanhung/uuid-helper": ">=2.0",
         "monolog/monolog": "^2.3 || ^1.26",
         "codeguy/upload": "^1.3"
     },

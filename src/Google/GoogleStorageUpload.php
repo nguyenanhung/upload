@@ -10,8 +10,9 @@
 
 namespace nguyenanhung\Upload\Google;
 
-use Google\Cloud\Core\Exception\GoogleException;
 use nguyenanhung\Upload\Base;
+use Google\Cloud\Core\Exception\GoogleException;
+use Google\Cloud\Storage\ObjectIterator;
 use Google\Cloud\Storage\StorageClient;
 
 /**
@@ -81,7 +82,7 @@ class GoogleStorageUpload extends Base implements GoogleStorageUploadInterface
      * @author   : 713uk13m <dev@nguyenanhung.com>
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      */
-    public function __construct($config = array())
+    public function __construct(array $config = array())
     {
         parent::__construct($config);
         $this->config = $config;
@@ -110,7 +111,7 @@ class GoogleStorageUpload extends Base implements GoogleStorageUploadInterface
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/17/2021 30:13
      */
-    public function setProjectId($projectId)
+    public function setProjectId($projectId): GoogleStorageUpload
     {
         $this->projectId = $projectId;
 
@@ -127,7 +128,7 @@ class GoogleStorageUpload extends Base implements GoogleStorageUploadInterface
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/17/2021 30:33
      */
-    public function setKeyFilePath($keyFilePath)
+    public function setKeyFilePath($keyFilePath): GoogleStorageUpload
     {
         $this->keyFilePath = $keyFilePath;
 
@@ -144,7 +145,7 @@ class GoogleStorageUpload extends Base implements GoogleStorageUploadInterface
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/17/2021 39:31
      */
-    public function setBucketName($bucketName)
+    public function setBucketName($bucketName): GoogleStorageUpload
     {
         $this->bucketName = $bucketName;
 
@@ -161,7 +162,7 @@ class GoogleStorageUpload extends Base implements GoogleStorageUploadInterface
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/17/2021 52:00
      */
-    public function setStorageClass($storageClass)
+    public function setStorageClass($storageClass): GoogleStorageUpload
     {
         $this->storageClass = $storageClass;
 
@@ -178,7 +179,7 @@ class GoogleStorageUpload extends Base implements GoogleStorageUploadInterface
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/17/2021 51:56
      */
-    public function setStorageLocation($storageLocation)
+    public function setStorageLocation($storageLocation): GoogleStorageUpload
     {
         $this->storageLocation = $storageLocation;
 
@@ -195,7 +196,7 @@ class GoogleStorageUpload extends Base implements GoogleStorageUploadInterface
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/17/2021 05:53
      */
-    public function setFileData($fileData)
+    public function setFileData($fileData): GoogleStorageUpload
     {
         $this->fileData = $fileData;
 
@@ -269,7 +270,7 @@ class GoogleStorageUpload extends Base implements GoogleStorageUploadInterface
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/17/2021 59:31
      */
-    public function getListObject($directoryPrefix = null)
+    public function getListObject($directoryPrefix = null): ObjectIterator
     {
         $bucket = $this->storage->bucket($this->bucketName);
         if (!empty($directoryPrefix)) {
@@ -294,7 +295,7 @@ class GoogleStorageUpload extends Base implements GoogleStorageUploadInterface
      * @see      https://cloud.google.com/storage/docs/uploads-downloads
      * @see      https://cloud.google.com/storage/docs/uploading-objects#storage-upload-object-php
      */
-    public function handleUpload()
+    public function handleUpload(): GoogleStorageUpload
     {
         $bucket = $this->storage->bucket($this->bucketName);
 

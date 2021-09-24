@@ -28,7 +28,7 @@ class Base implements Environment
     protected $error = false;
 
     /** @var null|mixed $errorData */
-    protected $errorData = null;
+    protected $errorData;
 
     /**
      * @var array Sample Config
@@ -46,7 +46,7 @@ class Base implements Environment
     protected $config;
 
     /** @var Logger|null */
-    protected $logger = null;
+    protected $logger;
 
     /** @var string $loggerPath */
     protected $loggerPath;
@@ -104,7 +104,7 @@ class Base implements Environment
      * @author   : 713uk13m <dev@nguyenanhung.com>
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      */
-    public function __construct($config = array())
+    public function __construct(array $config = array())
     {
         $this->config = $config;
     }
@@ -119,7 +119,7 @@ class Base implements Environment
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/17/2021 06:33
      */
-    public function setConfig($config)
+    public function setConfig($config): Base
     {
         $this->config = $config;
 
@@ -134,7 +134,7 @@ class Base implements Environment
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/17/2021 08:00
      */
-    public function getConfig()
+    public function getConfig(): array
     {
         return $this->config;
     }
@@ -147,7 +147,7 @@ class Base implements Environment
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/17/2021 28:51
      */
-    public function getSampleConfig()
+    public function getSampleConfig(): array
     {
         return $this->sampleConfig;
     }
@@ -160,7 +160,7 @@ class Base implements Environment
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/17/2021 53:37
      */
-    public function getSampleOptions()
+    public function getSampleOptions(): array
     {
         return $this->sampleOptions;
     }
@@ -173,7 +173,7 @@ class Base implements Environment
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/17/2021 34:17
      */
-    public function getVersion()
+    public function getVersion(): string
     {
         return self::VERSION;
     }
@@ -186,7 +186,7 @@ class Base implements Environment
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/17/2021 14:42
      */
-    public function getLibraryInfo()
+    public function getLibraryInfo(): array
     {
         return array(
             'name'        => self::PROJECT_NAME,
@@ -208,7 +208,7 @@ class Base implements Environment
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/17/2021 13:03
      */
-    public function setLoggerPath($loggerPath = '/tmp')
+    public function setLoggerPath(string $loggerPath = '/tmp'): Base
     {
         $this->loggerPath = $loggerPath;
 
@@ -224,7 +224,7 @@ class Base implements Environment
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/17/2021 26:34
      */
-    public function setLogger($logger = false)
+    public function setLogger(bool $logger = false)
     {
         try {
             if ($logger === true) {
@@ -280,7 +280,7 @@ class Base implements Environment
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/17/2021 52:47
      */
-    public function getUploadResult()
+    public function getUploadResult(): bool
     {
         return $this->result;
     }
@@ -293,7 +293,7 @@ class Base implements Environment
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/17/2021 07:39
      */
-    public function getUploadData()
+    public function getUploadData(): array
     {
         return $this->uploadData;
     }
@@ -308,7 +308,7 @@ class Base implements Environment
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/17/2021 44:04
      */
-    public function setPrefixFilename($prefixFilename)
+    public function setPrefixFilename($prefixFilename): Base
     {
         $this->prefixFilename = $prefixFilename;
 
@@ -325,7 +325,7 @@ class Base implements Environment
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/17/2021 43:11
      */
-    public function setUploadPath($uploadPath)
+    public function setUploadPath($uploadPath): Base
     {
         $this->uploadPath = $uploadPath;
 
@@ -342,7 +342,7 @@ class Base implements Environment
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/17/2021 45:10
      */
-    public function setFilename($filename)
+    public function setFilename($filename): Base
     {
         $this->filename = $filename;
 
@@ -359,7 +359,7 @@ class Base implements Environment
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/17/2021 45:20
      */
-    public function setMediaType($mediaType)
+    public function setMediaType($mediaType): Base
     {
         $this->mediaType = $mediaType;
 
@@ -376,7 +376,7 @@ class Base implements Environment
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/17/2021 45:17
      */
-    public function setMaxFileSize($maxFileSize)
+    public function setMaxFileSize($maxFileSize): Base
     {
         $this->maxFileSize = $maxFileSize;
 
@@ -393,7 +393,7 @@ class Base implements Environment
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/17/2021 51:42
      */
-    public function setFileExtension($fileExtension)
+    public function setFileExtension($fileExtension): Base
     {
         $this->fileExtension = $fileExtension;
 
@@ -408,7 +408,7 @@ class Base implements Environment
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/17/2021 00:32
      */
-    public function isError()
+    public function isError(): bool
     {
         return $this->error;
     }

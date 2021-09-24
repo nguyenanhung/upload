@@ -12,6 +12,8 @@ namespace nguyenanhung\Upload\S3;
 
 use Aws\S3\S3Client;
 use Aws\S3\Exception\S3Exception;
+use Aws\Result as AwsResult;
+use Psr\Http\Message\UriInterface;
 use nguyenanhung\Upload\Base;
 
 /**
@@ -58,7 +60,7 @@ class S3Upload extends Base implements S3UploadInterface
      * @author   : 713uk13m <dev@nguyenanhung.com>
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      */
-    public function __construct($config = array())
+    public function __construct(array $config = array())
     {
         parent::__construct($config);
         $this->config = $config;
@@ -81,7 +83,7 @@ class S3Upload extends Base implements S3UploadInterface
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/17/2021 31:13
      */
-    public function setBucketName($bucketName)
+    public function setBucketName($bucketName): S3Upload
     {
         $this->bucketName = $bucketName;
 
@@ -96,7 +98,7 @@ class S3Upload extends Base implements S3UploadInterface
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/17/2021 31:58
      */
-    public function getListObject()
+    public function getListObject(): AwsResult
     {
         return $this->S3->listObjects(array('Bucket' => $this->bucketName));
     }
@@ -109,7 +111,7 @@ class S3Upload extends Base implements S3UploadInterface
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/17/2021 32:08
      */
-    public function addBucket()
+    public function addBucket(): AwsResult
     {
         return $this->S3->createBucket(array('Bucket' => $this->bucketName));
     }
@@ -122,7 +124,7 @@ class S3Upload extends Base implements S3UploadInterface
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/17/2021 37:15
      */
-    public function getSignedUrl()
+    public function getSignedUrl(): UriInterface
     {
         $objectData = array(
             'Bucket'         => $this->bucketName,

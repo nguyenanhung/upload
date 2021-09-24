@@ -56,7 +56,7 @@ class SimpleUpload extends Base implements SimpleUploadInterface
      * @author   : 713uk13m <dev@nguyenanhung.com>
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      */
-    public function __construct($config = array())
+    public function __construct(array $config = array())
     {
         parent::__construct($config);
         $this->config = $config;
@@ -90,7 +90,7 @@ class SimpleUpload extends Base implements SimpleUploadInterface
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/17/2021 45:22
      */
-    public function setFormId($formId)
+    public function setFormId($formId): SimpleUpload
     {
         $this->formId = $formId;
 
@@ -105,7 +105,7 @@ class SimpleUpload extends Base implements SimpleUploadInterface
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/17/2021 52:51
      */
-    public function handleUpload()
+    public function handleUpload(): SimpleUpload
     {
         if (empty($this->uploadPath) || empty($this->formId)) {
             $this->result = false;

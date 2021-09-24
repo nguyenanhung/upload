@@ -17,7 +17,7 @@ namespace nguyenanhung\Upload;
  */
 interface Environment
 {
-    const VERSION       = '1.0.4';
+    const VERSION       = '2.0.0';
     const LAST_MODIFIED = '2021-09-24';
     const AUTHOR_NAME   = 'Hung Nguyen';
     const AUTHOR_EMAIL  = 'dev@nguyenanhung.com';
@@ -33,7 +33,7 @@ interface Environment
      *
      * @return string Current Project Version, VD: 1.0.0
      */
-    public function getVersion();
+    public function getVersion(): string;
 
     /**
      * Function getLibraryInfo
@@ -43,5 +43,5 @@ interface Environment
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/17/2021 14:42
      */
-    public function getLibraryInfo();
+    public function getLibraryInfo(): array;
 }

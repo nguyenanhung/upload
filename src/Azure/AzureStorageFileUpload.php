@@ -29,7 +29,7 @@ class AzureStorageFileUpload extends Base
      * @author   : 713uk13m <dev@nguyenanhung.com>
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      */
-    public function __construct($config = array())
+    public function __construct(array $config = array())
     {
         parent::__construct($config);
         $this->config = $config;

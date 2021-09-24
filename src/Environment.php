@@ -17,8 +17,8 @@ namespace nguyenanhung\Upload;
  */
 interface Environment
 {
-    const VERSION       = '1.0.3';
-    const LAST_MODIFIED = '2021-09-20';
+    const VERSION       = '1.0.4';
+    const LAST_MODIFIED = '2021-09-24';
     const AUTHOR_NAME   = 'Hung Nguyen';
     const AUTHOR_EMAIL  = 'dev@nguyenanhung.com';
     const AUTHOR_WEB    = 'https://nguyenanhung.com';

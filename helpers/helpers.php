@@ -14,10 +14,9 @@ if (!function_exists('setupNewFileName')) {
      * @param string $prefix
      *
      * @return string
-     * @throws \Exception
      * @author   : 713uk13m <dev@nguyenanhung.com>
      * @copyright: 713uk13m <dev@nguyenanhung.com>
-     * @time     : 09/24/2021 32:47
+     * @time     : 18/07/2022 10:34
      */
     function setupNewFileName(string $prefix = ''): string
     {
@@ -25,6 +24,7 @@ if (!function_exists('setupNewFileName')) {
             $prefix = trim($prefix, '-');
             $prefix .= '-';
         }
-        return $prefix . date('Y-m-d') . '-' . generate_uuid_v4();
+
+        return trim($prefix) . date('Y-m-d') . '-' . generate_uuid_v4();
     }
 }

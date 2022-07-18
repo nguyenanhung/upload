@@ -69,10 +69,10 @@ class SimpleUpload extends Base implements SimpleUploadInterface
         if (isset($config['maxFileSize'])) {
             $this->maxFileSize = trim($config['maxFileSize']);
         }
-        if (isset($config['fileExtension'])) {
+        if (isset($config['fileExtension']) && is_string($config['fileExtension'])) {
             $this->fileExtension = trim($config['fileExtension']);
         }
-        if (isset($config['mediaType'])) {
+        if (isset($config['mediaType']) && is_string($config['mediaType'])) {
             $this->mediaType = trim($config['mediaType']);
         }
         if (isset($config['prefixFilename'])) {

@@ -1,4 +1,9 @@
-[![Latest Stable Version](http://poser.pugx.org/nguyenanhung/upload/v)](https://packagist.org/packages/nguyenanhung/upload) [![Total Downloads](http://poser.pugx.org/nguyenanhung/upload/downloads)](https://packagist.org/packages/nguyenanhung/upload) [![Latest Unstable Version](http://poser.pugx.org/nguyenanhung/upload/v/unstable)](https://packagist.org/packages/nguyenanhung/upload) [![License](http://poser.pugx.org/nguyenanhung/upload/license)](https://packagist.org/packages/nguyenanhung/upload) [![PHP Version Require](http://poser.pugx.org/nguyenanhung/upload/require/php)](https://packagist.org/packages/nguyenanhung/upload)
+[![Latest Stable Version](https://img.shields.io/packagist/v/nguyenanhung/upload.svg?style=flat-square)](https://packagist.org/packages/nguyenanhung/upload)
+[![Total Downloads](https://img.shields.io/packagist/dt/nguyenanhung/upload.svg?style=flat-square)](https://packagist.org/packages/nguyenanhung/upload)
+[![Daily Downloads](https://img.shields.io/packagist/dd/nguyenanhung/upload.svg?style=flat-square)](https://packagist.org/packages/nguyenanhung/upload)
+[![Monthly Downloads](https://img.shields.io/packagist/dm/nguyenanhung/upload.svg?style=flat-square)](https://packagist.org/packages/nguyenanhung/upload)
+[![License](https://img.shields.io/packagist/l/nguyenanhung/upload.svg?style=flat-square)](https://packagist.org/packages/nguyenanhung/upload)
+[![PHP Version Require](https://img.shields.io/packagist/dependency-v/nguyenanhung/upload/php)](https://packagist.org/packages/nguyenanhung/upload)
 
 # Upload Manager
 
